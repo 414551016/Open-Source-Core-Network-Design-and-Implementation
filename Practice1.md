@@ -4,6 +4,7 @@
 ## Description：
 
 ## 先建立兩台 Ubuntu VM
+> 最重要的是：兩台 VM 必須可以互相 ping，而且都可以連 Internet。
 - VM1
   - 名稱：free5GC
   - OS：Ubuntu 24.04 LTS
@@ -17,3 +18,10 @@
   - RAM：4~8 GB
   - Disk：30~40 GB
 
+### 環境使用：
+#### 下載 VirtualBox
+- [Oracle VirtualBox 官方下載頁](https://www.virtualbox.org/wiki/Downloads?utm_source=chatgpt.com)
+- 教學資源：
+  - [「虛擬機教學」1. 免費的Oracle VM VirtualBox架設! How to create a virtual machine on VirtualBox !(06:44)](https://www.youtube.com/watch?v=4qbe5P4kC0w&list=PLzoF0xJbyYF1bRBvnu37kOJZSbSrlvZrB)
+  - 
+- 
