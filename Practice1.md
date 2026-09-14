@@ -23,5 +23,5 @@
 - [Oracle VirtualBox 官方下載頁](https://www.virtualbox.org/wiki/Downloads?utm_source=chatgpt.com)
 - 教學資源：
   - [「虛擬機教學」1. 免費的Oracle VM VirtualBox架設! How to create a virtual machine on VirtualBox !(06:44)](https://www.youtube.com/watch?v=4qbe5P4kC0w&list=PLzoF0xJbyYF1bRBvnu37kOJZSbSrlvZrB)
-  - 
+  - [「虛擬機教學」2. Linux Ubuntu安裝，以Oracle VM VirtualBox虛擬機安裝Ubuntu。 Install Ubuntu on VirtualBox in Windows!](https://www.youtube.com/watch?v=xnTtF-jJrMQ&list=PLzoF0xJbyYF1bRBvnu37kOJZSbSrlvZrB&index=2)
 - 
