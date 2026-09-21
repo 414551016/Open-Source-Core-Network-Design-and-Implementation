@@ -213,23 +213,23 @@ Prompt：請說明本教學重點內容，及你的看法與總結
 
 ## slide：31
 <div align="left" >
-  <img src="./Lecture/Week03/W3 5G Architecture_page-0003.jpg" width="50%">
+  <img src="./Lecture/Week03/W3 5G Architecture_page-0031.jpg" width="50%">
 </div>
 
 ## slide：32
 <div align="left" >
-  <img src="./Lecture/Week03/W3 5G Architecture_page-0003.jpg" width="50%">
+  <img src="./Lecture/Week03/W3 5G Architecture_page-0032.jpg" width="50%">
 </div>
 
 ## slide：33
 <div align="left" >
-  <img src="./Lecture/Week03/W3 5G Architecture_page-0003.jpg" width="50%">
+  <img src="./Lecture/Week03/W3 5G Architecture_page-0033.jpg" width="50%">
 </div>
 
 
 ## slide：34
 <div align="left" >
-  <img src="./Lecture/Week03/W3 5G Architecture_page-0003.jpg" width="50%">
+  <img src="./Lecture/Week03/W3 5G Architecture_page-0034.jpg" width="50%">
 </div>
 
 
