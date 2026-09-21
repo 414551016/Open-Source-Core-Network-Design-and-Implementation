@@ -123,12 +123,25 @@ Prompt：請說明本教學重點內容，及你的看法與總結
   - 實作與標準的區分：簡報下方的補充說明非常關鍵。在學習開源核心網（如 free5GC）時，理解哪些元件屬於國際標準規範（3GPP）、哪些屬於系統實作配套（如 WebConsole），有助於釐清理論架構與實際維運工具之間的差異。
   - 整體總結：本頁投影片旨在為學員建立 5GC 內部各主幹元件的總覽地圖，是進入 5G 核心網控制面（Control Plane）與用戶面（User Plane）運作機制前的重要基礎。
 
-
-
 ## slide：22
 <div align="left" >
   <img src="./Lecture/Week03/W3 5G Architecture_page-0022.jpg" width="50%">
 </div>
+
+這張簡報的重點為 AS（Access Stratum）與 NAS（Non-Access Stratum）兩層控制訊令（Control Signaling）的比較與架構解構。
+- 本教學重點內容
+  - 核心概念：5G 網路將 UE（用戶設備）發出的控制訊令劃分為 AS 與 NAS 兩個不同層級，各自有明確的分工與終止節點（Termination Point）。
+  - AS（Access Stratum，存取層）：
+    -  對象與範圍：UE 與 RAN（無線存取網，即 gNB 基站）之間的無線資源控制訊令。
+    -  典型範例：如 RRC（Radio Resource Control）連線建立、無線資源配置與實體層參數設定。
+    -  終止點：訊令到達 gNB（基站）即告終止，5G 核心網（5GC）完全看不到也不會處理這部分的細節。
+  - NAS（Non-Access Stratum，非存取層）：
+    - 對象與範圍：UE 與 5GC（核心網）之間的高層控制訊令。
+    - 典型範例：如 Registration（註冊）、PDU Session 建立請求（資料通道建立）等。
+    - 終止點：RAN（基站）僅扮演透明傳輸角色（原封不動地將封包轉送），訊令最終在核心網的 AMF 終止與解析。
+  - 架構意義：<br>正是因為「UE 無法直接透過物理線路接觸核心網」，才需要靠 RAN 進行中間轉送，這也成為後續劃分 N1（UE 與 AMF 間的邏輯介面） 與 N2（RAN 與 AMF 間的實體/網路介面） 的根本由來。
+- 個人看法與總結
+
 
 ## slide：23
 <div align="left" >
@@ -159,6 +172,20 @@ Prompt：請說明本教學重點內容，及你的看法與總結
 <div align="left" >
   <img src="./Lecture/Week03/W3 5G Architecture_page-0028.jpg" width="50%">
 </div>
+
+這張簡報的重點為 5G 核心網中建立數據傳輸管道的「PDU Session 建立程序（Establishment Procedure）」與其運作流程。
+- 本教學重點內容
+  - 核心定義：<br>PDU Session 是 UE（用戶設備）與 DN（Data Network，外部資料網路）之間的一條邏輯連線。其功能等同於 4G LTE 架構中的 Bearer（承載），是使用者實際上網傳輸資料的通道。
+  - 建置程序四步驟：
+    - 步驟 1：建立請求發送（UE $\rightarrow$ RAN $\rightarrow$ AMF）<br>UE 發出 NAS 層的 Establishment Request，經由 RAN（gNB）透過 N2 介面原封不動轉送（N2 Forward）給 AMF。
+    - 步驟 2：情境建立與策略決策（AMF $\rightarrow$ SMF）<br>AMF 將請求轉交給專門處理工作階段的 SMF（Create SM Context）。SMF 接手後進行決策，包含選擇合適的 UPF、對應的 DN 以及配置 QoS（服務品質） 參數。
+    - 步驟 3：轉送規則設定（SMF $\rightarrow$ UPF）<br>SMF 透過 N4 介面向 UPF 下達指令，下發並建立資料封包的轉送規則（建立轉送規則）。
+    - 步驟 4：使用者面管道建立（RAN $\leftrightarrow$ UPF）<br>完成設定後，RAN 與 UPF 之間建立起 N3 GTP-U Tunnel（使用者面隧道），讓真正的數據流量可以在 UE 與外部網路之間高速傳輸。
+- 個人看法與總結
+  - 控制面與用戶面的極致分離（CUPS）：<br>這張圖非常直觀地呈現了 5G 的 CUPS（Control and User Plane Separation）架構。控制面的信令由 AMF 與 SMF 互相協調並下達決策（步驟 1～3），而實際承載高頻寬流量的「使用者面（步驟 4）」則直接穿過 RAN 與 UPF，完全不經過 AMF/SMF，極大地減輕了控制面元件的負載。
+  - 4G 與 5G 的演進對照：<br>簡報標註「對應 4G 的 Bearer」，點出了概念上的繼承與變革。4G 是以管道（Bearer）為單位的硬性連接，而 5G 採用 PDU Session，能更彈性地根據 QoS Flow 進行細粒度的流量管理與網路切片（Network Slicing）對應。
+  - 整體總結：<br>本頁簡報是將前面章節提到的各個 NF（AMF、SMF、UPF）與控制層（NAS/AS）融合起來的「實戰觀念圖」。掌握了 PDU Session 的建立順序，就掌握了 5G 端到端資料傳輸的骨幹脈絡。
+
 
 ## slide：29
 <div align="left" >
