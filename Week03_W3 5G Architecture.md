@@ -1,1 +1,8 @@
 
+### Week 3 課堂逐字稿
+## slide：1
+<div align="left" >
+  <img src="./Lecture/Week03/week3-AI-In-Teamwork-260921_page-0001.jpg" width="49%">
+  <img src="./Lecture/Week03/week3-AI-In-Teamwork-260921_page-0002.jpg" width="49%">
+</div>
+
