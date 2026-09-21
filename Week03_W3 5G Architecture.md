@@ -1,6 +1,6 @@
 
 Prompt：請說明本教學重點內容，及你的看法與總結
-- 教學資源：[W3 5G Architecture](https://cndi-free5gc.github.io/doc-slide/slides/W3%205G%20Architecture.pdf)
+- 教學資源：[{W3 5G Architecture}](https://cndi-free5gc.github.io/doc-slide/slides/W3%205G%20Architecture.pdf) [[W3 5G Architecture]]()
 ### Week 3 課堂逐字稿
 ## slide：1 -2
 <div align="left" >
