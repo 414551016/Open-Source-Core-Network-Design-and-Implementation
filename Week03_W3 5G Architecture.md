@@ -1,4 +1,5 @@
 
+Prompt：請說明本教學重點內容，及你的看法與總結
 ### Week 3 課堂逐字稿
 ## slide：1 -2
 <div align="left" >
