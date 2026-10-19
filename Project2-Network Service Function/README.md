@@ -88,7 +88,7 @@ Interface 則是「共同操作規則」。上層程式按照規則存取資料�
 ### 二、學習知識地圖：你需要學哪些東西？
 下面是建議的學習順序。先掌握前面的基礎，再往後完成整合。
 <div align="left" >
-    <img src="./mermaid-diagram.png" width="50%">
+    <img src="./mermaid-diagram.png" width="30%">
   </div>
 
 | 知識 | 白話解釋 | 本次學到什麼程度就夠 |
