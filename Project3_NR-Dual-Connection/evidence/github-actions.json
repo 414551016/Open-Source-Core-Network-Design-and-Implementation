@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Go",
+    "head_sha": "8333e13df1629cd9a27d2c8f624d5c75fa1e8e13",
+    "event": "push",
+    "status": "completed",
+    "conclusion": "success",
+    "html_url": "https://github.com/414551016/pj3-dc/actions/runs/43907632669"
+  },
+  {
+    "name": "Commit Message Check",
+    "head_sha": "8333e13df1629cd9a27d2c8f624d5c75fa1e8e13",
+    "event": "push",
+    "status": "completed",
+    "conclusion": "success",
+    "html_url": "https://github.com/414551016/pj3-dc/actions/runs/43907632822"
+  },
+  {
+    "name": "GolangCI-Lint",
+    "head_sha": "8333e13df1629cd9a27d2c8f624d5c75fa1e8e13",
+    "event": "push",
+    "status": "completed",
+    "conclusion": "success",
+    "html_url": "https://github.com/414551016/pj3-dc/actions/runs/43907632838"
+  }
+]

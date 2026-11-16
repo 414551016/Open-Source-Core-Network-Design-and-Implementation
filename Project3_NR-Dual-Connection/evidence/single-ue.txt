@@ -1,0 +1,9 @@
+Project 3 | single RAN | UE capture
+Source file: single-ue.pcap    Decoder: TShark
+Display filter: icmp && ip.addr == 1.1.1.1
+
+Frame  Source IPv4                     Destination IPv4                ICMP          TEID
+1      10.60.0.1                       1.1.1.1                         Echo request  
+4      1.1.1.1                         10.60.0.1                       Echo reply    
+14     10.60.0.2                       1.1.1.1                         Echo request  
+17     1.1.1.1                         10.60.0.2                       Echo reply    

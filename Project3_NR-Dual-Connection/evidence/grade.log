@@ -1,0 +1,1336 @@
+====================================================
+[Code] make build / make test / make lint / make image
+====================================================
+--- make build ---
+cd free-ran-ue && go build ./...
+go: downloading github.com/Alonza0314/logger-go/v2 v2.1.0
+go: downloading github.com/free-ran-ue/util v0.1.0
+go: downloading github.com/spf13/cobra v1.10.2
+go: downloading github.com/gin-gonic/gin v1.12.0
+go: downloading github.com/free5gc/nas v1.3.0
+go: downloading github.com/free5gc/ngap v1.2.0
+go: downloading github.com/free5gc/openapi v1.3.0
+go: downloading github.com/free5gc/sctp v1.2.0
+go: downloading github.com/free5gc/util v1.4.0
+go: downloading github.com/songgao/water v0.0.0-20200317203138-2b4b6d7c09d8
+go: downloading github.com/golang-jwt/jwt/v5 v5.3.1
+go: downloading gopkg.in/yaml.v2 v2.4.0
+go: downloading github.com/spf13/pflag v1.0.9
+go: downloading github.com/gin-contrib/sse v1.1.0
+go: downloading github.com/mattn/go-isatty v0.0.20
+go: downloading github.com/quic-go/quic-go v0.59.1
+go: downloading golang.org/x/net v0.55.0
+go: downloading github.com/pkg/errors v0.9.1
+go: downloading github.com/go-playground/validator/v10 v10.30.1
+go: downloading github.com/goccy/go-yaml v1.19.2
+go: downloading github.com/pelletier/go-toml/v2 v2.2.4
+go: downloading github.com/ugorji/go/codec v1.3.1
+go: downloading go.mongodb.org/mongo-driver/v2 v2.5.0
+go: downloading google.golang.org/protobuf v1.36.10
+go: downloading golang.org/x/sys v0.45.0
+go: downloading github.com/quic-go/qpack v0.6.0
+go: downloading github.com/aead/cmac v0.0.0-20160719120800-7af84192f0b1
+go: downloading github.com/gabriel-vasile/mimetype v1.4.12
+go: downloading github.com/go-playground/universal-translator v0.18.1
+go: downloading github.com/leodido/go-urn v1.4.0
+go: downloading golang.org/x/crypto v0.52.0
+go: downloading golang.org/x/text v0.37.0
+go: downloading github.com/go-playground/locales v0.14.1
+--- make test ---
+cd free-ran-ue && go test ./...
+go: downloading github.com/go-playground/assert v1.2.1
+go: downloading github.com/stretchr/testify v1.12.1
+go: downloading go.yaml.in/yaml/v3 v3.0.5
+?   	github.com/free-ran-ue/free-ran-ue/v2	[no test files]
+?   	github.com/free-ran-ue/free-ran-ue/v2/cmd	[no test files]
+?   	github.com/free-ran-ue/free-ran-ue/v2/console/backend	[no test files]
+?   	github.com/free-ran-ue/free-ran-ue/v2/console/model	[no test files]
+?   	github.com/free-ran-ue/free-ran-ue/v2/constant	[no test files]
+ok  	github.com/free-ran-ue/free-ran-ue/v2/gnb	0.013s
+?   	github.com/free-ran-ue/free-ran-ue/v2/logger	[no test files]
+?   	github.com/free-ran-ue/free-ran-ue/v2/model	[no test files]
+ok  	github.com/free-ran-ue/free-ran-ue/v2/ue	0.017s
+--- make lint ---
+cd free-ran-ue && golangci-lint run
+0 issues.
+--- make image ---
+docker build -f Dockerfile -t pj3/free-ran-ue:latest .
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 1.03kB 0.0s done
+#1 DONE 0.1s
+
+#2 [internal] load metadata for docker.io/library/golang:1.26.2
+#2 DONE 0.1s
+
+#3 [internal] load metadata for docker.io/library/debian:bookworm-slim
+#3 DONE 1.6s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 2B done
+#4 DONE 0.1s
+
+#5 [internal] load build context
+#5 DONE 0.0s
+
+#6 [stage-1 1/4] FROM docker.io/library/debian:bookworm-slim@sha256:734a72b3d6142a71993b4bc580ca01d8ca687f77a2c422d96a961d3376b179bc
+#6 resolve docker.io/library/debian:bookworm-slim@sha256:734a72b3d6142a71993b4bc580ca01d8ca687f77a2c422d96a961d3376b179bc 0.1s done
+#6 DONE 0.1s
+
+#7 [builder 1/5] FROM docker.io/library/golang:1.26.2@sha256:b54cbf583d390341599d7bcbc062425c081105cc5ef6d170ced98ef9d047c716
+#7 resolve docker.io/library/golang:1.26.2@sha256:b54cbf583d390341599d7bcbc062425c081105cc5ef6d170ced98ef9d047c716
+#7 ...
+
+#6 [stage-1 1/4] FROM docker.io/library/debian:bookworm-slim@sha256:734a72b3d6142a71993b4bc580ca01d8ca687f77a2c422d96a961d3376b179bc
+#6 CACHED
+
+#7 [builder 1/5] FROM docker.io/library/golang:1.26.2@sha256:b54cbf583d390341599d7bcbc062425c081105cc5ef6d170ced98ef9d047c716
+#7 resolve docker.io/library/golang:1.26.2@sha256:b54cbf583d390341599d7bcbc062425c081105cc5ef6d170ced98ef9d047c716 0.1s done
+#7 ...
+
+#8 [stage-1 2/4] WORKDIR /free-ran-ue
+#8 DONE 0.4s
+
+#9 [stage-1 3/4] RUN apt-get update &&     apt-get install -y iproute2 &&     apt-get install -y net-tools &&     apt-get install -y iputils-ping &&     apt-get install -y iperf3 &&     apt-get install -y curl &&     rm -rf /var/lib/apt/lists/*
+#9 ...
+
+#5 [internal] load build context
+#5 transferring context: 1.70MB 0.5s done
+#5 DONE 1.3s
+
+#7 [builder 1/5] FROM docker.io/library/golang:1.26.2@sha256:b54cbf583d390341599d7bcbc062425c081105cc5ef6d170ced98ef9d047c716
+#7 DONE 2.0s
+
+#9 [stage-1 3/4] RUN apt-get update &&     apt-get install -y iproute2 &&     apt-get install -y net-tools &&     apt-get install -y iputils-ping &&     apt-get install -y iperf3 &&     apt-get install -y curl &&     rm -rf /var/lib/apt/lists/*
+#9 ...
+
+#10 [builder 2/5] WORKDIR /free-ran-ue
+#10 DONE 0.3s
+
+#11 [builder 3/5] COPY free-ran-ue/ .
+#11 DONE 0.5s
+
+#9 [stage-1 3/4] RUN apt-get update &&     apt-get install -y iproute2 &&     apt-get install -y net-tools &&     apt-get install -y iputils-ping &&     apt-get install -y iperf3 &&     apt-get install -y curl &&     rm -rf /var/lib/apt/lists/*
+#9 3.489 Get:1 http://deb.debian.org/debian bookworm InRelease [151 kB]
+#9 3.654 Get:2 http://deb.debian.org/debian bookworm-updates InRelease [55.4 kB]
+#9 3.698 Get:3 http://deb.debian.org/debian-security bookworm-security InRelease [34.8 kB]
+#9 4.295 Get:4 http://deb.debian.org/debian bookworm/main amd64 Packages [8790 kB]
+#9 5.828 Get:5 http://deb.debian.org/debian bookworm-updates/main amd64 Packages [6924 B]
+#9 5.842 Get:6 http://deb.debian.org/debian-security bookworm-security/main amd64 Packages [375 kB]
+#9 8.678 Fetched 9414 kB in 5s (1728 kB/s)
+#9 8.678 Reading package lists...
+#9 11.43 Reading package lists...
+#9 ...
+
+#12 [builder 4/5] RUN go mod download
+#12 ...
+
+#9 [stage-1 3/4] RUN apt-get update &&     apt-get install -y iproute2 &&     apt-get install -y net-tools &&     apt-get install -y iputils-ping &&     apt-get install -y iperf3 &&     apt-get install -y curl &&     rm -rf /var/lib/apt/lists/*
+#9 11.43 Reading package lists...
+#9 13.96 Building dependency tree...
+#9 14.84 Reading state information...
+#9 15.80 The following additional packages will be installed:
+#9 15.81   krb5-locales libatm1 libbpf1 libbsd0 libcap2-bin libelf1 libgssapi-krb5-2
+#9 15.81   libk5crypto3 libkeyutils1 libkrb5-3 libkrb5support0 libmnl0 libpam-cap
+#9 15.82   libssl3 libtirpc-common libtirpc3 libxtables12
+#9 15.82 Suggested packages:
+#9 15.82   iproute2-doc python3:any krb5-doc krb5-user
+#9 16.17 The following NEW packages will be installed:
+#9 16.20   iproute2 krb5-locales libatm1 libbpf1 libbsd0 libcap2-bin libelf1
+#9 16.20   libgssapi-krb5-2 libk5crypto3 libkeyutils1 libkrb5-3 libkrb5support0 libmnl0
+#9 16.20   libpam-cap libssl3 libtirpc-common libtirpc3 libxtables12
+#9 16.45 0 upgraded, 18 newly installed, 0 to remove and 0 not upgraded.
+#9 16.45 Need to get 4436 kB of archives.
+#9 16.45 After this operation, 14.4 MB of additional disk space will be used.
+#9 16.45 Get:1 http://deb.debian.org/debian bookworm/main amd64 libelf1 amd64 0.188-2.1 [174 kB]
+#9 16.66 Get:2 http://deb.debian.org/debian bookworm/main amd64 libbpf1 amd64 1:1.1.2-0+deb12u1 [145 kB]
+#9 16.83 Get:3 http://deb.debian.org/debian bookworm/main amd64 libbsd0 amd64 0.11.7-2 [117 kB]
+#9 17.00 Get:4 http://deb.debian.org/debian bookworm/main amd64 libmnl0 amd64 1.0.4-3 [12.5 kB]
+#9 17.02 Get:5 http://deb.debian.org/debian bookworm/main amd64 libkrb5support0 amd64 1.20.1-2+deb12u5 [33.2 kB]
+#9 17.04 Get:6 http://deb.debian.org/debian bookworm/main amd64 libk5crypto3 amd64 1.20.1-2+deb12u5 [79.7 kB]
+#9 17.06 Get:7 http://deb.debian.org/debian bookworm/main amd64 libkeyutils1 amd64 1.6.3-2 [8808 B]
+#9 17.07 Get:8 http://deb.debian.org/debian-security bookworm-security/main amd64 libssl3 amd64 3.0.22-1~deb12u2 [2040 kB]
+#9 17.81 Get:9 http://deb.debian.org/debian bookworm/main amd64 libkrb5-3 amd64 1.20.1-2+deb12u5 [332 kB]
+#9 17.92 Get:10 http://deb.debian.org/debian bookworm/main amd64 libgssapi-krb5-2 amd64 1.20.1-2+deb12u5 [135 kB]
+#9 17.94 Get:11 http://deb.debian.org/debian bookworm/main amd64 libtirpc-common all 1.3.3+ds-1 [14.0 kB]
+#9 17.95 Get:12 http://deb.debian.org/debian bookworm/main amd64 libtirpc3 amd64 1.3.3+ds-1 [85.2 kB]
+#9 17.97 Get:13 http://deb.debian.org/debian bookworm/main amd64 libxtables12 amd64 1.8.9-2 [30.8 kB]
+#9 17.98 Get:14 http://deb.debian.org/debian bookworm/main amd64 libcap2-bin amd64 1:2.66-4+deb12u3+b1 [35.2 kB]
+#9 18.00 Get:15 http://deb.debian.org/debian bookworm/main amd64 iproute2 amd64 6.1.0-3 [1046 kB]
+#9 18.23 Get:16 http://deb.debian.org/debian bookworm/main amd64 krb5-locales all 1.20.1-2+deb12u5 [63.5 kB]
+#9 18.26 Get:17 http://deb.debian.org/debian bookworm/main amd64 libatm1 amd64 1:2.5.1-4+b2 [68.3 kB]
+#9 18.28 Get:18 http://deb.debian.org/debian bookworm/main amd64 libpam-cap amd64 1:2.66-4+deb12u3+b1 [15.1 kB]
+#9 19.23 debconf: delaying package configuration, since apt-utils is not installed
+#9 19.37 Fetched 4436 kB in 2s (2198 kB/s)
+#9 19.56 Selecting previously unselected package libelf1:amd64.
+#9 19.56 (Reading database ... 
+(Reading database ... 5%
+(Reading database ... 10%
+(Reading database ... 15%
+(Reading database ... 20%
+(Reading database ... 25%
+(Reading database ... 30%
+(Reading database ... 35%
+(Reading database ... 40%
+(Reading database ... 45%
+(Reading database ... 50%
+(Reading database ... 55%
+(Reading database ... 60%
+(Reading database ... 65%
+(Reading database ... 70%
+(Reading database ... 75%
+(Reading database ... 80%
+(Reading database ... 85%
+(Reading database ... 90%
+(Reading database ... 95%
+(Reading database ... 100%
+(Reading database ... 6096 files and directories currently installed.)
+#9 19.69 Preparing to unpack .../00-libelf1_0.188-2.1_amd64.deb ...
+#9 19.74 Unpacking libelf1:amd64 (0.188-2.1) ...
+#9 19.98 Selecting previously unselected package libbpf1:amd64.
+#9 19.98 Preparing to unpack .../01-libbpf1_1%3a1.1.2-0+deb12u1_amd64.deb ...
+#9 19.99 Unpacking libbpf1:amd64 (1:1.1.2-0+deb12u1) ...
+#9 20.19 Selecting previously unselected package libbsd0:amd64.
+#9 20.19 Preparing to unpack .../02-libbsd0_0.11.7-2_amd64.deb ...
+#9 20.21 Unpacking libbsd0:amd64 (0.11.7-2) ...
+#9 20.39 Selecting previously unselected package libmnl0:amd64.
+#9 20.39 Preparing to unpack .../03-libmnl0_1.0.4-3_amd64.deb ...
+#9 20.41 Unpacking libmnl0:amd64 (1.0.4-3) ...
+#9 20.59 Selecting previously unselected package libkrb5support0:amd64.
+#9 20.59 Preparing to unpack .../04-libkrb5support0_1.20.1-2+deb12u5_amd64.deb ...
+#9 20.61 Unpacking libkrb5support0:amd64 (1.20.1-2+deb12u5) ...
+#9 20.83 Selecting previously unselected package libk5crypto3:amd64.
+#9 20.83 Preparing to unpack .../05-libk5crypto3_1.20.1-2+deb12u5_amd64.deb ...
+#9 20.85 Unpacking libk5crypto3:amd64 (1.20.1-2+deb12u5) ...
+#9 21.04 Selecting previously unselected package libkeyutils1:amd64.
+#9 21.05 Preparing to unpack .../06-libkeyutils1_1.6.3-2_amd64.deb ...
+#9 21.07 Unpacking libkeyutils1:amd64 (1.6.3-2) ...
+#9 21.26 Selecting previously unselected package libssl3:amd64.
+#9 21.26 Preparing to unpack .../07-libssl3_3.0.22-1~deb12u2_amd64.deb ...
+#9 21.28 Unpacking libssl3:amd64 (3.0.22-1~deb12u2) ...
+#9 21.98 Selecting previously unselected package libkrb5-3:amd64.
+#9 21.98 Preparing to unpack .../08-libkrb5-3_1.20.1-2+deb12u5_amd64.deb ...
+#9 22.00 Unpacking libkrb5-3:amd64 (1.20.1-2+deb12u5) ...
+#9 22.26 Selecting previously unselected package libgssapi-krb5-2:amd64.
+#9 22.26 Preparing to unpack .../09-libgssapi-krb5-2_1.20.1-2+deb12u5_amd64.deb ...
+#9 22.29 Unpacking libgssapi-krb5-2:amd64 (1.20.1-2+deb12u5) ...
+#9 22.51 Selecting previously unselected package libtirpc-common.
+#9 22.52 Preparing to unpack .../10-libtirpc-common_1.3.3+ds-1_all.deb ...
+#9 22.54 Unpacking libtirpc-common (1.3.3+ds-1) ...
+#9 22.73 Selecting previously unselected package libtirpc3:amd64.
+#9 22.74 Preparing to unpack .../11-libtirpc3_1.3.3+ds-1_amd64.deb ...
+#9 22.80 Unpacking libtirpc3:amd64 (1.3.3+ds-1) ...
+#9 23.09 Selecting previously unselected package libxtables12:amd64.
+#9 23.09 Preparing to unpack .../12-libxtables12_1.8.9-2_amd64.deb ...
+#9 23.11 Unpacking libxtables12:amd64 (1.8.9-2) ...
+#9 23.32 Selecting previously unselected package libcap2-bin.
+#9 23.34 Preparing to unpack .../13-libcap2-bin_1%3a2.66-4+deb12u3+b1_amd64.deb ...
+#9 23.36 Unpacking libcap2-bin (1:2.66-4+deb12u3+b1) ...
+#9 23.58 Selecting previously unselected package iproute2.
+#9 23.59 Preparing to unpack .../14-iproute2_6.1.0-3_amd64.deb ...
+#9 23.61 Unpacking iproute2 (6.1.0-3) ...
+#9 24.17 Selecting previously unselected package krb5-locales.
+#9 24.17 Preparing to unpack .../15-krb5-locales_1.20.1-2+deb12u5_all.deb ...
+#9 24.19 Unpacking krb5-locales (1.20.1-2+deb12u5) ...
+#9 24.37 Selecting previously unselected package libatm1:amd64.
+#9 24.38 Preparing to unpack .../16-libatm1_1%3a2.5.1-4+b2_amd64.deb ...
+#9 24.40 Unpacking libatm1:amd64 (1:2.5.1-4+b2) ...
+#9 24.64 Selecting previously unselected package libpam-cap:amd64.
+#9 24.64 Preparing to unpack .../17-libpam-cap_1%3a2.66-4+deb12u3+b1_amd64.deb ...
+#9 24.66 Unpacking libpam-cap:amd64 (1:2.66-4+deb12u3+b1) ...
+#9 24.87 Setting up libkeyutils1:amd64 (1.6.3-2) ...
+#9 24.91 Setting up libtirpc-common (1.3.3+ds-1) ...
+#9 24.97 Setting up libssl3:amd64 (3.0.22-1~deb12u2) ...
+#9 25.01 Setting up krb5-locales (1.20.1-2+deb12u5) ...
+#9 25.07 Setting up libatm1:amd64 (1:2.5.1-4+b2) ...
+#9 25.12 Setting up libkrb5support0:amd64 (1.20.1-2+deb12u5) ...
+#9 25.19 Setting up libcap2-bin (1:2.66-4+deb12u3+b1) ...
+#9 25.24 Setting up libmnl0:amd64 (1.0.4-3) ...
+#9 25.30 Setting up libk5crypto3:amd64 (1.20.1-2+deb12u5) ...
+#9 25.34 Setting up libxtables12:amd64 (1.8.9-2) ...
+#9 25.38 Setting up libkrb5-3:amd64 (1.20.1-2+deb12u5) ...
+#9 25.42 Setting up libbsd0:amd64 (0.11.7-2) ...
+#9 25.45 Setting up libelf1:amd64 (0.188-2.1) ...
+#9 25.49 Setting up libpam-cap:amd64 (1:2.66-4+deb12u3+b1) ...
+#9 25.92 debconf: unable to initialize frontend: Dialog
+#9 25.93 debconf: (TERM is not set, so the dialog frontend is not usable.)
+#9 25.93 debconf: falling back to frontend: Readline
+#9 25.93 debconf: unable to initialize frontend: Readline
+#9 25.93 debconf: (Can't locate Term/ReadLine.pm in @INC (you may need to install the Term::ReadLine module) (@INC contains: /etc/perl /usr/local/lib/x86_64-linux-gnu/perl/5.36.0 /usr/local/share/perl/5.36.0 /usr/lib/x86_64-linux-gnu/perl5/5.36 /usr/share/perl5 /usr/lib/x86_64-linux-gnu/perl-base /usr/lib/x86_64-linux-gnu/perl/5.36 /usr/share/perl/5.36 /usr/local/lib/site_perl) at /usr/share/perl5/Debconf/FrontEnd/Readline.pm line 7.)
+#9 25.93 debconf: falling back to frontend: Teletype
+#9 26.35 Setting up libbpf1:amd64 (1:1.1.2-0+deb12u1) ...
+#9 26.39 Setting up libgssapi-krb5-2:amd64 (1.20.1-2+deb12u5) ...
+#9 26.46 Setting up libtirpc3:amd64 (1.3.3+ds-1) ...
+#9 26.50 Setting up iproute2 (6.1.0-3) ...
+#9 27.07 debconf: unable to initialize frontend: Dialog
+#9 27.07 debconf: (TERM is not set, so the dialog frontend is not usable.)
+#9 27.07 debconf: falling back to frontend: Readline
+#9 27.07 debconf: unable to initialize frontend: Readline
+#9 27.07 debconf: (Can't locate Term/ReadLine.pm in @INC (you may need to install the Term::ReadLine module) (@INC contains: /etc/perl /usr/local/lib/x86_64-linux-gnu/perl/5.36.0 /usr/local/share/perl/5.36.0 /usr/lib/x86_64-linux-gnu/perl5/5.36 /usr/share/perl5 /usr/lib/x86_64-linux-gnu/perl-base /usr/lib/x86_64-linux-gnu/perl/5.36 /usr/share/perl/5.36 /usr/local/lib/site_perl) at /usr/share/perl5/Debconf/FrontEnd/Readline.pm line 7.)
+#9 27.07 debconf: falling back to frontend: Teletype
+#9 27.27 Processing triggers for libc-bin (2.36-9+deb12u14) ...
+#9 27.58 Reading package lists...
+#9 30.26 Building dependency tree...
+#9 31.28 Reading state information...
+#9 32.29 The following NEW packages will be installed:
+#9 32.29   net-tools
+#9 32.53 0 upgraded, 1 newly installed, 0 to remove and 0 not upgraded.
+#9 32.53 Need to get 243 kB of archives.
+#9 32.53 After this operation, 1001 kB of additional disk space will be used.
+#9 32.53 Get:1 http://deb.debian.org/debian bookworm/main amd64 net-tools amd64 2.10-0.1+deb12u2 [243 kB]
+#9 33.25 debconf: delaying package configuration, since apt-utils is not installed
+#9 33.64 Fetched 243 kB in 0s (830 kB/s)
+#9 33.94 Selecting previously unselected package net-tools.
+#9 33.96 (Reading database ... 
+(Reading database ... 5%
+(Reading database ... 10%
+(Reading database ... 15%
+(Reading database ... 20%
+(Reading database ... 25%
+(Reading database ... 30%
+(Reading database ... 35%
+(Reading database ... 40%
+(Reading database ... 45%
+(Reading database ... 50%
+(Reading database ... 55%
+(Reading database ... 60%
+(Reading database ... 65%
+(Reading database ... 70%
+(Reading database ... 75%
+(Reading database ... 80%
+(Reading database ... 85%
+(Reading database ... 90%
+(Reading database ... 95%
+(Reading database ... 100%
+(Reading database ... 6421 files and directories currently installed.)
+#9 34.02 Preparing to unpack .../net-tools_2.10-0.1+deb12u2_amd64.deb ...
+#9 34.06 Unpacking net-tools (2.10-0.1+deb12u2) ...
+#9 34.32 Setting up net-tools (2.10-0.1+deb12u2) ...
+#9 34.47 Reading package lists...
+#9 ...
+
+#12 [builder 4/5] RUN go mod download
+#12 DONE 33.7s
+
+#13 [builder 5/5] RUN make bin
+#13 1.419 go build -o build/free-ran-ue main.go
+#13 ...
+
+#9 [stage-1 3/4] RUN apt-get update &&     apt-get install -y iproute2 &&     apt-get install -y net-tools &&     apt-get install -y iputils-ping &&     apt-get install -y iperf3 &&     apt-get install -y curl &&     rm -rf /var/lib/apt/lists/*
+#9 34.47 Reading package lists...
+#9 37.40 Building dependency tree...
+#9 38.06 Reading state information...
+#9 39.23 The following NEW packages will be installed:
+#9 39.23   iputils-ping
+#9 39.45 0 upgraded, 1 newly installed, 0 to remove and 0 not upgraded.
+#9 39.45 Need to get 47.2 kB of archives.
+#9 39.45 After this operation, 124 kB of additional disk space will be used.
+#9 39.45 Get:1 http://deb.debian.org/debian bookworm/main amd64 iputils-ping amd64 3:20221126-1+deb12u1 [47.2 kB]
+#9 39.96 debconf: delaying package configuration, since apt-utils is not installed
+#9 40.09 Fetched 47.2 kB in 0s (215 kB/s)
+#9 40.20 Selecting previously unselected package iputils-ping.
+#9 40.20 (Reading database ... 
+(Reading database ... 5%
+(Reading database ... 10%
+(Reading database ... 15%
+(Reading database ... 20%
+(Reading database ... 25%
+(Reading database ... 30%
+(Reading database ... 35%
+(Reading database ... 40%
+(Reading database ... 45%
+(Reading database ... 50%
+(Reading database ... 55%
+(Reading database ... 60%
+(Reading database ... 65%
+(Reading database ... 70%
+(Reading database ... 75%
+(Reading database ... 80%
+(Reading database ... 85%
+(Reading database ... 90%
+(Reading database ... 95%
+(Reading database ... 100%
+(Reading database ... 6476 files and directories currently installed.)
+#9 40.23 Preparing to unpack .../iputils-ping_3%3a20221126-1+deb12u1_amd64.deb ...
+#9 40.24 Unpacking iputils-ping (3:20221126-1+deb12u1) ...
+#9 40.42 Setting up iputils-ping (3:20221126-1+deb12u1) ...
+#9 40.65 Reading package lists...
+#9 43.19 Building dependency tree...
+#9 43.83 Reading state information...
+#9 44.88 The following additional packages will be installed:
+#9 44.89   libiperf0 libsctp1
+#9 44.91 Suggested packages:
+#9 44.91   lksctp-tools
+#9 45.10 The following NEW packages will be installed:
+#9 45.11   iperf3 libiperf0 libsctp1
+#9 45.38 0 upgraded, 3 newly installed, 0 to remove and 0 not upgraded.
+#9 45.38 Need to get 155 kB of archives.
+#9 45.38 After this operation, 403 kB of additional disk space will be used.
+#9 45.38 Get:1 http://deb.debian.org/debian bookworm/main amd64 libsctp1 amd64 1.0.19+dfsg-2 [29.7 kB]
+#9 45.46 Get:2 http://deb.debian.org/debian bookworm/main amd64 libiperf0 amd64 3.12-1+deb12u2 [91.2 kB]
+#9 45.56 Get:3 http://deb.debian.org/debian bookworm/main amd64 iperf3 amd64 3.12-1+deb12u2 [34.0 kB]
+#9 46.01 debconf: delaying package configuration, since apt-utils is not installed
+#9 46.14 Fetched 155 kB in 0s (383 kB/s)
+#9 46.31 Selecting previously unselected package libsctp1:amd64.
+#9 46.31 (Reading database ... 
+(Reading database ... 5%
+(Reading database ... 10%
+(Reading database ... 15%
+(Reading database ... 20%
+(Reading database ... 25%
+(Reading database ... 30%
+(Reading database ... 35%
+(Reading database ... 40%
+(Reading database ... 45%
+(Reading database ... 50%
+(Reading database ... 55%
+(Reading database ... 60%
+(Reading database ... 65%
+(Reading database ... 70%
+(Reading database ... 75%
+(Reading database ... 80%
+(Reading database ... 85%
+(Reading database ... 90%
+(Reading database ... 95%
+(Reading database ... 100%
+(Reading database ... 6487 files and directories currently installed.)
+#9 46.34 Preparing to unpack .../libsctp1_1.0.19+dfsg-2_amd64.deb ...
+#9 46.38 Unpacking libsctp1:amd64 (1.0.19+dfsg-2) ...
+#9 46.63 Selecting previously unselected package libiperf0:amd64.
+#9 46.64 Preparing to unpack .../libiperf0_3.12-1+deb12u2_amd64.deb ...
+#9 46.66 Unpacking libiperf0:amd64 (3.12-1+deb12u2) ...
+#9 46.89 Selecting previously unselected package iperf3.
+#9 46.90 Preparing to unpack .../iperf3_3.12-1+deb12u2_amd64.deb ...
+#9 46.92 Unpacking iperf3 (3.12-1+deb12u2) ...
+#9 47.11 Setting up libsctp1:amd64 (1.0.19+dfsg-2) ...
+#9 47.14 Setting up libiperf0:amd64 (3.12-1+deb12u2) ...
+#9 47.18 Setting up iperf3 (3.12-1+deb12u2) ...
+#9 47.61 debconf: unable to initialize frontend: Dialog
+#9 47.61 debconf: (TERM is not set, so the dialog frontend is not usable.)
+#9 47.61 debconf: falling back to frontend: Readline
+#9 47.62 debconf: unable to initialize frontend: Readline
+#9 47.62 debconf: (Can't locate Term/ReadLine.pm in @INC (you may need to install the Term::ReadLine module) (@INC contains: /etc/perl /usr/local/lib/x86_64-linux-gnu/perl/5.36.0 /usr/local/share/perl/5.36.0 /usr/lib/x86_64-linux-gnu/perl5/5.36 /usr/share/perl5 /usr/lib/x86_64-linux-gnu/perl-base /usr/lib/x86_64-linux-gnu/perl/5.36 /usr/share/perl/5.36 /usr/local/lib/site_perl) at /usr/share/perl5/Debconf/FrontEnd/Readline.pm line 7.)
+#9 47.62 debconf: falling back to frontend: Teletype
+#9 47.76 Configuring iperf3
+#9 47.76 ------------------
+#9 47.76 
+#9 47.76 Choose this option if Iperf3 should start automatically as a daemon, now and at
+#9 47.76 boot time.
+#9 47.76 
+#9 47.76 Start Iperf3 as a daemon automatically? [yes/no] 
+#9 47.76 Use of uninitialized value $_[1] in join or string at /usr/share/perl5/Debconf/DbDriver/Stack.pm line 111.
+#9 48.18 invoke-rc.d: could not determine current runlevel
+#9 48.24 invoke-rc.d: policy-rc.d denied execution of stop.
+#9 48.81 Use of uninitialized value $val in substitution (s///) at /usr/share/perl5/Debconf/Format/822.pm line 83, <GEN6> line 1.
+#9 48.81 Use of uninitialized value $val in concatenation (.) or string at /usr/share/perl5/Debconf/Format/822.pm line 84, <GEN6> line 1.
+#9 48.87 Processing triggers for libc-bin (2.36-9+deb12u14) ...
+#9 49.14 Reading package lists...
+#9 51.49 Building dependency tree...
+#9 52.13 Reading state information...
+#9 53.12 The following additional packages will be installed:
+#9 53.14   ca-certificates libbrotli1 libcurl4 libldap-2.5-0 libldap-common
+#9 53.14   libnghttp2-14 libpsl5 librtmp1 libsasl2-2 libsasl2-modules
+#9 53.14   libsasl2-modules-db libssh2-1 openssl publicsuffix
+#9 53.14 Suggested packages:
+#9 53.14   libsasl2-modules-gssapi-mit | libsasl2-modules-gssapi-heimdal
+#9 53.14   libsasl2-modules-ldap libsasl2-modules-otp libsasl2-modules-sql
+#9 53.47 The following NEW packages will be installed:
+#9 53.47   ca-certificates curl libbrotli1 libcurl4 libldap-2.5-0 libldap-common
+#9 53.49   libnghttp2-14 libpsl5 librtmp1 libsasl2-2 libsasl2-modules
+#9 53.49   libsasl2-modules-db libssh2-1 openssl publicsuffix
+#9 53.76 0 upgraded, 15 newly installed, 0 to remove and 0 not upgraded.
+#9 53.76 Need to get 3440 kB of archives.
+#9 53.76 After this operation, 7313 kB of additional disk space will be used.
+#9 53.76 Get:1 http://deb.debian.org/debian-security bookworm-security/main amd64 openssl amd64 3.0.22-1~deb12u2 [1442 kB]
+#9 54.25 Get:2 http://deb.debian.org/debian-security bookworm-security/main amd64 ca-certificates all 20250419~deb12u2 [161 kB]
+#9 54.31 Get:3 http://deb.debian.org/debian-security bookworm-security/main amd64 libbrotli1 amd64 1.0.9-2+deb12u1 [275 kB]
+#9 54.35 Get:4 http://deb.debian.org/debian-security bookworm-security/main amd64 libsasl2-modules-db amd64 2.1.28+dfsg-10+deb12u1 [20.5 kB]
+#9 54.37 Get:5 http://deb.debian.org/debian-security bookworm-security/main amd64 libsasl2-2 amd64 2.1.28+dfsg-10+deb12u1 [59.9 kB]
+#9 54.39 Get:6 http://deb.debian.org/debian bookworm/main amd64 libldap-2.5-0 amd64 2.5.13+dfsg-5 [183 kB]
+#9 54.42 Get:7 http://deb.debian.org/debian bookworm/main amd64 libnghttp2-14 amd64 1.52.0-1+deb12u3 [72.4 kB]
+#9 54.43 Get:8 http://deb.debian.org/debian bookworm/main amd64 libpsl5 amd64 0.21.2-1 [58.7 kB]
+#9 54.43 Get:9 http://deb.debian.org/debian bookworm/main amd64 librtmp1 amd64 2.4+20151223.gitfa8646d.1-2+b2 [60.8 kB]
+#9 54.44 Get:10 http://deb.debian.org/debian-security bookworm-security/main amd64 libssh2-1 amd64 1.10.0-3+deb12u1 [176 kB]
+#9 54.47 Get:11 http://deb.debian.org/debian bookworm/main amd64 libcurl4 amd64 7.88.1-10+deb12u15 [392 kB]
+#9 54.49 Get:12 http://deb.debian.org/debian bookworm/main amd64 curl amd64 7.88.1-10+deb12u15 [316 kB]
+#9 54.52 Get:13 http://deb.debian.org/debian bookworm/main amd64 libldap-common all 2.5.13+dfsg-5 [29.3 kB]
+#9 54.53 Get:14 http://deb.debian.org/debian-security bookworm-security/main amd64 libsasl2-modules amd64 2.1.28+dfsg-10+deb12u1 [66.9 kB]
+#9 54.54 Get:15 http://deb.debian.org/debian bookworm/main amd64 publicsuffix all 20230209.2326-1 [126 kB]
+#9 55.01 debconf: delaying package configuration, since apt-utils is not installed
+#9 55.13 Fetched 3440 kB in 1s (3344 kB/s)
+#9 55.28 Selecting previously unselected package openssl.
+#9 55.28 (Reading database ... 
+(Reading database ... 5%
+(Reading database ... 10%
+(Reading database ... 15%
+(Reading database ... 20%
+(Reading database ... 25%
+(Reading database ... 30%
+(Reading database ... 35%
+(Reading database ... 40%
+(Reading database ... 45%
+(Reading database ... 50%
+(Reading database ... 55%
+(Reading database ... 60%
+(Reading database ... 65%
+(Reading database ... 70%
+(Reading database ... 75%
+(Reading database ... 80%
+(Reading database ... 85%
+(Reading database ... 90%
+(Reading database ... 95%
+(Reading database ... 100%
+(Reading database ... 6513 files and directories currently installed.)
+#9 55.30 Preparing to unpack .../00-openssl_3.0.22-1~deb12u2_amd64.deb ...
+#9 55.31 Unpacking openssl (3.0.22-1~deb12u2) ...
+#9 55.81 Selecting previously unselected package ca-certificates.
+#9 55.81 Preparing to unpack .../01-ca-certificates_20250419~deb12u2_all.deb ...
+#9 55.82 Unpacking ca-certificates (20250419~deb12u2) ...
+#9 56.13 Selecting previously unselected package libbrotli1:amd64.
+#9 56.14 Preparing to unpack .../02-libbrotli1_1.0.9-2+deb12u1_amd64.deb ...
+#9 56.16 Unpacking libbrotli1:amd64 (1.0.9-2+deb12u1) ...
+#9 56.40 Selecting previously unselected package libsasl2-modules-db:amd64.
+#9 56.42 Preparing to unpack .../03-libsasl2-modules-db_2.1.28+dfsg-10+deb12u1_amd64.deb ...
+#9 56.43 Unpacking libsasl2-modules-db:amd64 (2.1.28+dfsg-10+deb12u1) ...
+#9 56.60 Selecting previously unselected package libsasl2-2:amd64.
+#9 56.62 Preparing to unpack .../04-libsasl2-2_2.1.28+dfsg-10+deb12u1_amd64.deb ...
+#9 56.65 Unpacking libsasl2-2:amd64 (2.1.28+dfsg-10+deb12u1) ...
+#9 56.86 Selecting previously unselected package libldap-2.5-0:amd64.
+#9 56.87 Preparing to unpack .../05-libldap-2.5-0_2.5.13+dfsg-5_amd64.deb ...
+#9 56.88 Unpacking libldap-2.5-0:amd64 (2.5.13+dfsg-5) ...
+#9 57.10 Selecting previously unselected package libnghttp2-14:amd64.
+#9 57.11 Preparing to unpack .../06-libnghttp2-14_1.52.0-1+deb12u3_amd64.deb ...
+#9 57.14 Unpacking libnghttp2-14:amd64 (1.52.0-1+deb12u3) ...
+#9 57.34 Selecting previously unselected package libpsl5:amd64.
+#9 57.36 Preparing to unpack .../07-libpsl5_0.21.2-1_amd64.deb ...
+#9 57.38 Unpacking libpsl5:amd64 (0.21.2-1) ...
+#9 57.56 Selecting previously unselected package librtmp1:amd64.
+#9 57.58 Preparing to unpack .../08-librtmp1_2.4+20151223.gitfa8646d.1-2+b2_amd64.deb ...
+#9 57.60 Unpacking librtmp1:amd64 (2.4+20151223.gitfa8646d.1-2+b2) ...
+#9 57.82 Selecting previously unselected package libssh2-1:amd64.
+#9 57.82 Preparing to unpack .../09-libssh2-1_1.10.0-3+deb12u1_amd64.deb ...
+#9 57.83 Unpacking libssh2-1:amd64 (1.10.0-3+deb12u1) ...
+#9 58.06 Selecting previously unselected package libcurl4:amd64.
+#9 58.06 Preparing to unpack .../10-libcurl4_7.88.1-10+deb12u15_amd64.deb ...
+#9 58.09 Unpacking libcurl4:amd64 (7.88.1-10+deb12u15) ...
+#9 58.33 Selecting previously unselected package curl.
+#9 58.34 Preparing to unpack .../11-curl_7.88.1-10+deb12u15_amd64.deb ...
+#9 58.35 Unpacking curl (7.88.1-10+deb12u15) ...
+#9 58.57 Selecting previously unselected package libldap-common.
+#9 58.58 Preparing to unpack .../12-libldap-common_2.5.13+dfsg-5_all.deb ...
+#9 58.59 Unpacking libldap-common (2.5.13+dfsg-5) ...
+#9 58.80 Selecting previously unselected package libsasl2-modules:amd64.
+#9 58.81 Preparing to unpack .../13-libsasl2-modules_2.1.28+dfsg-10+deb12u1_amd64.deb ...
+#9 58.88 Unpacking libsasl2-modules:amd64 (2.1.28+dfsg-10+deb12u1) ...
+#9 59.04 Selecting previously unselected package publicsuffix.
+#9 59.05 Preparing to unpack .../14-publicsuffix_20230209.2326-1_all.deb ...
+#9 59.07 Unpacking publicsuffix (20230209.2326-1) ...
+#9 59.28 Setting up libpsl5:amd64 (0.21.2-1) ...
+#9 59.32 Setting up libbrotli1:amd64 (1.0.9-2+deb12u1) ...
+#9 59.36 Setting up libsasl2-modules:amd64 (2.1.28+dfsg-10+deb12u1) ...
+#9 59.45 Setting up libnghttp2-14:amd64 (1.52.0-1+deb12u3) ...
+#9 59.50 Setting up libldap-common (2.5.13+dfsg-5) ...
+#9 59.56 Setting up libsasl2-modules-db:amd64 (2.1.28+dfsg-10+deb12u1) ...
+#9 59.62 Setting up librtmp1:amd64 (2.4+20151223.gitfa8646d.1-2+b2) ...
+#9 59.67 Setting up libsasl2-2:amd64 (2.1.28+dfsg-10+deb12u1) ...
+#9 59.71 Setting up libssh2-1:amd64 (1.10.0-3+deb12u1) ...
+#9 59.75 Setting up openssl (3.0.22-1~deb12u2) ...
+#9 59.84 Setting up publicsuffix (20230209.2326-1) ...
+#9 59.91 Setting up libldap-2.5-0:amd64 (2.5.13+dfsg-5) ...
+#9 59.94 Setting up ca-certificates (20250419~deb12u2) ...
+#9 60.39 debconf: unable to initialize frontend: Dialog
+#9 60.39 debconf: (TERM is not set, so the dialog frontend is not usable.)
+#9 60.39 debconf: falling back to frontend: Readline
+#9 60.39 debconf: unable to initialize frontend: Readline
+#9 60.40 debconf: (Can't locate Term/ReadLine.pm in @INC (you may need to install the Term::ReadLine module) (@INC contains: /etc/perl /usr/local/lib/x86_64-linux-gnu/perl/5.36.0 /usr/local/share/perl/5.36.0 /usr/lib/x86_64-linux-gnu/perl5/5.36 /usr/share/perl5 /usr/lib/x86_64-linux-gnu/perl-base /usr/lib/x86_64-linux-gnu/perl/5.36 /usr/share/perl/5.36 /usr/local/lib/site_perl) at /usr/share/perl5/Debconf/FrontEnd/Readline.pm line 7.)
+#9 60.40 debconf: falling back to frontend: Teletype
+#9 65.53 Updating certificates in /etc/ssl/certs...
+#9 75.17 148 added, 0 removed; done.
+#9 75.32 Setting up libcurl4:amd64 (7.88.1-10+deb12u15) ...
+#9 75.35 Setting up curl (7.88.1-10+deb12u15) ...
+#9 75.39 Processing triggers for libc-bin (2.36-9+deb12u14) ...
+#9 75.47 Processing triggers for ca-certificates (20250419~deb12u2) ...
+#9 75.55 Updating certificates in /etc/ssl/certs...
+#9 82.62 0 added, 0 removed; done.
+#9 82.62 Running hooks in /etc/ca-certificates/update.d...
+#9 82.65 done.
+#9 DONE 83.3s
+
+#13 [builder 5/5] RUN make bin
+#13 DONE 249.8s
+
+#14 [stage-1 4/4] COPY --from=builder /free-ran-ue/build/free-ran-ue /free-ran-ue/free-ran-ue
+#14 DONE 0.6s
+
+#15 exporting to image
+#15 exporting layers
+#15 exporting layers 7.1s done
+#15 exporting manifest sha256:f561bf36167a632df69d572a598212e692b25454b83834802292e70a46b22bf8
+#15 exporting manifest sha256:f561bf36167a632df69d572a598212e692b25454b83834802292e70a46b22bf8 0.0s done
+#15 exporting config sha256:29ace36ce8b34e3afedc6bf9b77d20111d114a4fc32f2356a855c5208189d631 0.1s done
+#15 exporting attestation manifest sha256:9d2e3edcce440421a190d3b94114e3837ba1b0d163ee44028cec72382a99fcfe
+#15 exporting attestation manifest sha256:9d2e3edcce440421a190d3b94114e3837ba1b0d163ee44028cec72382a99fcfe 0.1s done
+#15 exporting manifest list sha256:33ac103af741d9b4adc86cf8d32283e2aefcf45b9c42ad1fd40a70b48b41492e 0.0s done
+#15 naming to docker.io/pj3/free-ran-ue:latest done
+#15 unpacking to docker.io/pj3/free-ran-ue:latest
+#15 unpacking to docker.io/pj3/free-ran-ue:latest 1.3s done
+#15 DONE 8.7s
+====================================================
+[Functional] Both PDU sessions on master RAN
+====================================================
+--- set staticNrdc / nrdc.enable to false ---
+--- docker compose up ---
+ Network pj3-dc_cn-rans Creating 
+ Network pj3-dc_cn-rans Creating 
+ Network pj3-dc_ran-ue Creating 
+ Network pj3-dc_ran-ue Creating 
+ Network pj3-dc_sbi Creating 
+ Network pj3-dc_sbi Creating 
+ Volume pj3-dc_dbdata Creating 
+ Volume pj3-dc_dbdata Creating 
+ Volume pj3-dc_dbdata Created 
+ Volume pj3-dc_dbdata Created 
+ Network pj3-dc_cn-rans Created 
+ Network pj3-dc_cn-rans Created 
+ Network pj3-dc_ran-ue Created 
+ Network pj3-dc_ran-ue Created 
+ Network pj3-dc_sbi Created 
+ Network pj3-dc_sbi Created 
+ Container mongodb Creating 
+ Container upf Creating 
+ Container upf Created 
+ Container mongodb Created 
+ Container nrf Creating 
+ Container nrf Created 
+ Container amf Creating 
+ Container webconsole Creating 
+ Container udr Creating 
+ Container udm Creating 
+ Container ausf Creating 
+ Container nssf Creating 
+ Container pcf Creating 
+ Container smf Creating 
+ Container ausf Created 
+ Container webconsole Created 
+ Container chf Creating 
+ Container amf Created 
+ Container udr Created 
+ Container udm Created 
+ Container smf Created 
+ Container nssf Created 
+ Container pcf Created 
+ Container chf Created 
+ Container gnb-master Creating 
+ Container gnb-secondary Creating 
+ Container gnb-secondary Created 
+ Container gnb-master Created 
+ Container ue Creating 
+ Container ue Created 
+ Container mongodb Starting 
+ Container upf Starting 
+ Container mongodb Started 
+ Container nrf Starting 
+ Container nrf Started 
+ Container webconsole Starting 
+ Container pcf Starting 
+ Container udr Starting 
+ Container amf Starting 
+ Container udm Starting 
+ Container nssf Starting 
+ Container ausf Starting 
+ Container upf Started 
+ Container smf Starting 
+ Container smf Started 
+ Container webconsole Started 
+ Container chf Starting 
+ Container pcf Started 
+ Container udr Started 
+ Container amf Started 
+ Container udm Started 
+ Container nssf Started 
+ Container ausf Started 
+ Container chf Started 
+ Container gnb-secondary Starting 
+ Container gnb-master Starting 
+ Container gnb-secondary Started 
+ Container gnb-master Started 
+ Container ue Starting 
+ Container ue Started 
+ Container chf Waiting 
+ Container udm Waiting 
+ Container ausf Waiting 
+ Container gnb-secondary Waiting 
+ Container gnb-master Waiting 
+ Container webconsole Waiting 
+ Container nssf Waiting 
+ Container smf Waiting 
+ Container udr Waiting 
+ Container ue Waiting 
+ Container pcf Waiting 
+ Container upf Waiting 
+ Container amf Waiting 
+ Container nrf Waiting 
+ Container mongodb Waiting 
+ Container gnb-master Healthy 
+ Container gnb-secondary Healthy 
+ Container ausf Healthy 
+ Container udm Healthy 
+ Container chf Healthy 
+ Container nrf Healthy 
+ Container mongodb Healthy 
+ Container amf Healthy 
+ Container webconsole Healthy 
+ Container upf Healthy 
+ Container pcf Healthy 
+ Container ue Healthy 
+ Container udr Healthy 
+ Container smf Healthy 
+ Container nssf Healthy 
+--- install tcpdump in upf / ue ---
+Selecting previously unselected package libdbus-1-3:amd64.
+(Reading database ... 
+(Reading database ... 5%
+(Reading database ... 10%
+(Reading database ... 15%
+(Reading database ... 20%
+(Reading database ... 25%
+(Reading database ... 30%
+(Reading database ... 35%
+(Reading database ... 40%
+(Reading database ... 45%
+(Reading database ... 50%
+(Reading database ... 55%
+(Reading database ... 60%
+(Reading database ... 65%
+(Reading database ... 70%
+(Reading database ... 75%
+(Reading database ... 80%
+(Reading database ... 85%
+(Reading database ... 90%
+(Reading database ... 95%
+(Reading database ... 100%
+(Reading database ... 7859 files and directories currently installed.)
+Preparing to unpack .../00-libdbus-1-3_1.16.2-2_amd64.deb ...
+Unpacking libdbus-1-3:amd64 (1.16.2-2) ...
+Selecting previously unselected package dbus-bin.
+Preparing to unpack .../01-dbus-bin_1.16.2-2_amd64.deb ...
+Unpacking dbus-bin (1.16.2-2) ...
+Selecting previously unselected package dbus-session-bus-common.
+Preparing to unpack .../02-dbus-session-bus-common_1.16.2-2_all.deb ...
+Unpacking dbus-session-bus-common (1.16.2-2) ...
+Selecting previously unselected package libapparmor1:amd64.
+Preparing to unpack .../03-libapparmor1_4.1.0-1_amd64.deb ...
+Unpacking libapparmor1:amd64 (4.1.0-1) ...
+Selecting previously unselected package libexpat1:amd64.
+Preparing to unpack .../04-libexpat1_2.9.0-1~deb13u1_amd64.deb ...
+Unpacking libexpat1:amd64 (2.9.0-1~deb13u1) ...
+Selecting previously unselected package dbus-daemon.
+Preparing to unpack .../05-dbus-daemon_1.16.2-2_amd64.deb ...
+Unpacking dbus-daemon (1.16.2-2) ...
+Selecting previously unselected package dbus-system-bus-common.
+Preparing to unpack .../06-dbus-system-bus-common_1.16.2-2_all.deb ...
+Unpacking dbus-system-bus-common (1.16.2-2) ...
+Selecting previously unselected package dbus.
+Preparing to unpack .../07-dbus_1.16.2-2_amd64.deb ...
+Unpacking dbus (1.16.2-2) ...
+Selecting previously unselected package linux-sysctl-defaults.
+Preparing to unpack .../08-linux-sysctl-defaults_4.12.1_all.deb ...
+Unpacking linux-sysctl-defaults (4.12.1) ...
+Selecting previously unselected package libncursesw6:amd64.
+Preparing to unpack .../09-libncursesw6_6.5+20250216-2_amd64.deb ...
+Unpacking libncursesw6:amd64 (6.5+20250216-2) ...
+Selecting previously unselected package libproc2-0:amd64.
+Preparing to unpack .../10-libproc2-0_2%3a4.0.4-9_amd64.deb ...
+Unpacking libproc2-0:amd64 (2:4.0.4-9) ...
+Selecting previously unselected package procps.
+Preparing to unpack .../11-procps_2%3a4.0.4-9_amd64.deb ...
+Unpacking procps (2:4.0.4-9) ...
+Selecting previously unselected package libgpm2:amd64.
+Preparing to unpack .../12-libgpm2_1.20.7-11+b2_amd64.deb ...
+Unpacking libgpm2:amd64 (1.20.7-11+b2) ...
+Selecting previously unselected package libpcap0.8t64:amd64.
+Preparing to unpack .../13-libpcap0.8t64_1.10.5-2_amd64.deb ...
+Unpacking libpcap0.8t64:amd64 (1.10.5-2) ...
+Selecting previously unselected package psmisc.
+Preparing to unpack .../14-psmisc_23.7-2_amd64.deb ...
+Unpacking psmisc (23.7-2) ...
+Selecting previously unselected package tcpdump.
+Preparing to unpack .../15-tcpdump_4.99.5-2_amd64.deb ...
+Unpacking tcpdump (4.99.5-2) ...
+Setting up libexpat1:amd64 (2.9.0-1~deb13u1) ...
+Setting up libapparmor1:amd64 (4.1.0-1) ...
+Setting up libgpm2:amd64 (1.20.7-11+b2) ...
+Setting up psmisc (23.7-2) ...
+Setting up linux-sysctl-defaults (4.12.1) ...
+Setting up libdbus-1-3:amd64 (1.16.2-2) ...
+Setting up libproc2-0:amd64 (2:4.0.4-9) ...
+Setting up libncursesw6:amd64 (6.5+20250216-2) ...
+Setting up dbus-session-bus-common (1.16.2-2) ...
+Setting up procps (2:4.0.4-9) ...
+insserv: FATAL: service mountkernfs has to be enabled to use service procps
+Setting up libpcap0.8t64:amd64 (1.10.5-2) ...
+Setting up dbus-system-bus-common (1.16.2-2) ...
+Setting up dbus-bin (1.16.2-2) ...
+Setting up tcpdump (4.99.5-2) ...
+Setting up dbus-daemon (1.16.2-2) ...
+Setting up dbus (1.16.2-2) ...
+invoke-rc.d: could not determine current runlevel
+invoke-rc.d: policy-rc.d denied execution of start.
+Processing triggers for libc-bin (2.41-12+deb13u4) ...
+debconf: delaying package configuration, since apt-utils is not installed
+Selecting previously unselected package libdbus-1-3:amd64.
+(Reading database ... 
+(Reading database ... 5%
+(Reading database ... 10%
+(Reading database ... 15%
+(Reading database ... 20%
+(Reading database ... 25%
+(Reading database ... 30%
+(Reading database ... 35%
+(Reading database ... 40%
+(Reading database ... 45%
+(Reading database ... 50%
+(Reading database ... 55%
+(Reading database ... 60%
+(Reading database ... 65%
+(Reading database ... 70%
+(Reading database ... 75%
+(Reading database ... 80%
+(Reading database ... 85%
+(Reading database ... 90%
+(Reading database ... 95%
+(Reading database ... 100%
+(Reading database ... 7118 files and directories currently installed.)
+Preparing to unpack .../00-libdbus-1-3_1.14.10-1~deb12u1_amd64.deb ...
+Unpacking libdbus-1-3:amd64 (1.14.10-1~deb12u1) ...
+Selecting previously unselected package dbus-bin.
+Preparing to unpack .../01-dbus-bin_1.14.10-1~deb12u1_amd64.deb ...
+Unpacking dbus-bin (1.14.10-1~deb12u1) ...
+Selecting previously unselected package dbus-session-bus-common.
+Preparing to unpack .../02-dbus-session-bus-common_1.14.10-1~deb12u1_all.deb ...
+Unpacking dbus-session-bus-common (1.14.10-1~deb12u1) ...
+Selecting previously unselected package libapparmor1:amd64.
+Preparing to unpack .../03-libapparmor1_3.0.8-3_amd64.deb ...
+Unpacking libapparmor1:amd64 (3.0.8-3) ...
+Selecting previously unselected package libexpat1:amd64.
+Preparing to unpack .../04-libexpat1_2.5.0-1+deb12u5_amd64.deb ...
+Unpacking libexpat1:amd64 (2.5.0-1+deb12u5) ...
+Selecting previously unselected package dbus-daemon.
+Preparing to unpack .../05-dbus-daemon_1.14.10-1~deb12u1_amd64.deb ...
+Unpacking dbus-daemon (1.14.10-1~deb12u1) ...
+Selecting previously unselected package dbus-system-bus-common.
+Preparing to unpack .../06-dbus-system-bus-common_1.14.10-1~deb12u1_all.deb ...
+Unpacking dbus-system-bus-common (1.14.10-1~deb12u1) ...
+Selecting previously unselected package dbus.
+Preparing to unpack .../07-dbus_1.14.10-1~deb12u1_amd64.deb ...
+Unpacking dbus (1.14.10-1~deb12u1) ...
+Selecting previously unselected package libncursesw6:amd64.
+Preparing to unpack .../08-libncursesw6_6.4-4_amd64.deb ...
+Unpacking libncursesw6:amd64 (6.4-4) ...
+Selecting previously unselected package libproc2-0:amd64.
+Preparing to unpack .../09-libproc2-0_2%3a4.0.2-3_amd64.deb ...
+Unpacking libproc2-0:amd64 (2:4.0.2-3) ...
+Selecting previously unselected package procps.
+Preparing to unpack .../10-procps_2%3a4.0.2-3_amd64.deb ...
+Unpacking procps (2:4.0.2-3) ...
+Selecting previously unselected package libgpm2:amd64.
+Preparing to unpack .../11-libgpm2_1.20.7-10+b1_amd64.deb ...
+Unpacking libgpm2:amd64 (1.20.7-10+b1) ...
+Selecting previously unselected package libpcap0.8:amd64.
+Preparing to unpack .../12-libpcap0.8_1.10.3-1_amd64.deb ...
+Unpacking libpcap0.8:amd64 (1.10.3-1) ...
+Selecting previously unselected package psmisc.
+Preparing to unpack .../13-psmisc_23.6-1_amd64.deb ...
+Unpacking psmisc (23.6-1) ...
+Selecting previously unselected package tcpdump.
+Preparing to unpack .../14-tcpdump_4.99.3-1_amd64.deb ...
+Unpacking tcpdump (4.99.3-1) ...
+Setting up libexpat1:amd64 (2.5.0-1+deb12u5) ...
+Setting up libapparmor1:amd64 (3.0.8-3) ...
+Setting up libgpm2:amd64 (1.20.7-10+b1) ...
+Setting up psmisc (23.6-1) ...
+Setting up libdbus-1-3:amd64 (1.14.10-1~deb12u1) ...
+Setting up libproc2-0:amd64 (2:4.0.2-3) ...
+Setting up libncursesw6:amd64 (6.4-4) ...
+Setting up dbus-session-bus-common (1.14.10-1~deb12u1) ...
+Setting up procps (2:4.0.2-3) ...
+Setting up dbus-system-bus-common (1.14.10-1~deb12u1) ...
+Setting up dbus-bin (1.14.10-1~deb12u1) ...
+Setting up dbus-daemon (1.14.10-1~deb12u1) ...
+Setting up libpcap0.8:amd64 (1.10.3-1) ...
+Setting up dbus (1.14.10-1~deb12u1) ...
+invoke-rc.d: could not determine current runlevel
+invoke-rc.d: policy-rc.d denied execution of start.
+Setting up tcpdump (4.99.3-1) ...
+Processing triggers for libc-bin (2.36-9+deb12u14) ...
+--- create subscriber ---
+--- start ue ---
+--- start captures ---
+--- ping ueTun0 / ueTun1 ---
+PING 1.1.1.1 (1.1.1.1) from 10.60.0.1 ueTun0: 56(84) bytes of data.
+64 bytes from 1.1.1.1: icmp_seq=1 ttl=60 time=55.5 ms
+64 bytes from 1.1.1.1: icmp_seq=2 ttl=60 time=56.5 ms
+64 bytes from 1.1.1.1: icmp_seq=3 ttl=60 time=55.2 ms
+
+--- 1.1.1.1 ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2002ms
+rtt min/avg/max/mdev = 55.247/55.733/56.471/0.530 ms
+PING 1.1.1.1 (1.1.1.1) from 10.60.0.2 ueTun1: 56(84) bytes of data.
+64 bytes from 1.1.1.1: icmp_seq=1 ttl=60 time=55.7 ms
+64 bytes from 1.1.1.1: icmp_seq=2 ttl=60 time=55.3 ms
+64 bytes from 1.1.1.1: icmp_seq=3 ttl=60 time=54.8 ms
+
+--- 1.1.1.1 ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2005ms
+rtt min/avg/max/mdev = 54.819/55.246/55.653/0.340 ms
+--- verify upf.pcap / ue.pcap ---
+--- cleanup ---
+ Container ue Stopping 
+ Container ue Stopped 
+ Container ue Removing 
+ Container ue Removed 
+ Container gnb-master Stopping 
+ Container gnb-secondary Stopping 
+ Container gnb-master Stopped 
+ Container gnb-master Removing 
+ Container gnb-secondary Stopped 
+ Container gnb-secondary Removing 
+ Container gnb-master Removed 
+ Container gnb-secondary Removed 
+ Container pcf Stopping 
+ Container udr Stopping 
+ Container nssf Stopping 
+ Container amf Stopping 
+ Container ausf Stopping 
+ Container chf Stopping 
+ Container smf Stopping 
+ Container udm Stopping 
+ Container udr Stopped 
+ Container udr Removing 
+ Container udr Removed 
+ Container smf Stopped 
+ Container smf Removing 
+ Container pcf Stopped 
+ Container pcf Removing 
+ Container ausf Stopped 
+ Container ausf Removing 
+ Container smf Removed 
+ Container upf Stopping 
+ Container pcf Removed 
+ Container ausf Removed 
+ Container nssf Stopped 
+ Container nssf Removing 
+ Container nssf Removed 
+ Container udm Stopped 
+ Container udm Removing 
+ Container chf Stopped 
+ Container chf Removing 
+ Container amf Stopped 
+ Container amf Removing 
+ Container udm Removed 
+ Container upf Stopped 
+ Container upf Removing 
+ Container amf Removed 
+ Container chf Removed 
+ Container webconsole Stopping 
+ Container upf Removed 
+ Container webconsole Stopped 
+ Container webconsole Removing 
+ Container webconsole Removed 
+ Container nrf Stopping 
+ Container nrf Stopped 
+ Container nrf Removing 
+ Container nrf Removed 
+ Container mongodb Stopping 
+ Container mongodb Stopped 
+ Container mongodb Removing 
+ Container mongodb Removed 
+ Network pj3-dc_sbi Removing 
+ Network pj3-dc_ran-ue Removing 
+ Network pj3-dc_cn-rans Removing 
+ Network pj3-dc_sbi Removed 
+ Network pj3-dc_ran-ue Removed 
+ Network pj3-dc_cn-rans Removed 
+====================================================
+[Functional] PDU session 2 on second RAN (static DC)
+====================================================
+--- set staticNrdc / nrdc.enable to true ---
+--- docker compose up ---
+ Network pj3-dc_cn-rans Creating 
+ Network pj3-dc_cn-rans Creating 
+ Network pj3-dc_ran-ue Creating 
+ Network pj3-dc_ran-ue Creating 
+ Network pj3-dc_sbi Creating 
+ Network pj3-dc_sbi Creating 
+ Network pj3-dc_cn-rans Created 
+ Network pj3-dc_cn-rans Created 
+ Network pj3-dc_sbi Created 
+ Network pj3-dc_sbi Created 
+ Container mongodb Creating 
+ Container upf Creating 
+ Container upf Created 
+ Container mongodb Created 
+ Container nrf Creating 
+ Network pj3-dc_ran-ue Created 
+ Network pj3-dc_ran-ue Created 
+ Container nrf Created 
+ Container amf Creating 
+ Container webconsole Creating 
+ Container udr Creating 
+ Container udm Creating 
+ Container ausf Creating 
+ Container nssf Creating 
+ Container pcf Creating 
+ Container smf Creating 
+ Container webconsole Created 
+ Container chf Creating 
+ Container amf Created 
+ Container udr Created 
+ Container udm Created 
+ Container ausf Created 
+ Container pcf Created 
+ Container nssf Created 
+ Container smf Created 
+ Container chf Created 
+ Container gnb-master Creating 
+ Container gnb-secondary Creating 
+ Container gnb-master Created 
+ Container gnb-secondary Created 
+ Container ue Creating 
+ Container ue Created 
+ Container upf Starting 
+ Container mongodb Starting 
+ Container upf Started 
+ Container mongodb Started 
+ Container nrf Starting 
+ Container nrf Started 
+ Container udr Starting 
+ Container amf Starting 
+ Container udm Starting 
+ Container nssf Starting 
+ Container smf Starting 
+ Container pcf Starting 
+ Container webconsole Starting 
+ Container ausf Starting 
+ Container udr Started 
+ Container amf Started 
+ Container udm Started 
+ Container nssf Started 
+ Container smf Started 
+ Container pcf Started 
+ Container webconsole Started 
+ Container chf Starting 
+ Container chf Started 
+ Container ausf Started 
+ Container gnb-secondary Starting 
+ Container gnb-master Starting 
+ Container gnb-secondary Started 
+ Container gnb-master Started 
+ Container ue Starting 
+ Container ue Started 
+ Container pcf Waiting 
+ Container udm Waiting 
+ Container nssf Waiting 
+ Container upf Waiting 
+ Container nrf Waiting 
+ Container smf Waiting 
+ Container webconsole Waiting 
+ Container gnb-master Waiting 
+ Container ue Waiting 
+ Container mongodb Waiting 
+ Container ausf Waiting 
+ Container amf Waiting 
+ Container chf Waiting 
+ Container gnb-secondary Waiting 
+ Container udr Waiting 
+ Container gnb-secondary Healthy 
+ Container udr Healthy 
+ Container amf Healthy 
+ Container ausf Healthy 
+ Container mongodb Healthy 
+ Container ue Healthy 
+ Container gnb-master Healthy 
+ Container chf Healthy 
+ Container pcf Healthy 
+ Container udm Healthy 
+ Container nssf Healthy 
+ Container upf Healthy 
+ Container nrf Healthy 
+ Container smf Healthy 
+ Container webconsole Healthy 
+--- install tcpdump in upf / ue ---
+Selecting previously unselected package libdbus-1-3:amd64.
+(Reading database ... 
+(Reading database ... 5%
+(Reading database ... 10%
+(Reading database ... 15%
+(Reading database ... 20%
+(Reading database ... 25%
+(Reading database ... 30%
+(Reading database ... 35%
+(Reading database ... 40%
+(Reading database ... 45%
+(Reading database ... 50%
+(Reading database ... 55%
+(Reading database ... 60%
+(Reading database ... 65%
+(Reading database ... 70%
+(Reading database ... 75%
+(Reading database ... 80%
+(Reading database ... 85%
+(Reading database ... 90%
+(Reading database ... 95%
+(Reading database ... 100%
+(Reading database ... 7859 files and directories currently installed.)
+Preparing to unpack .../00-libdbus-1-3_1.16.2-2_amd64.deb ...
+Unpacking libdbus-1-3:amd64 (1.16.2-2) ...
+Selecting previously unselected package dbus-bin.
+Preparing to unpack .../01-dbus-bin_1.16.2-2_amd64.deb ...
+Unpacking dbus-bin (1.16.2-2) ...
+Selecting previously unselected package dbus-session-bus-common.
+Preparing to unpack .../02-dbus-session-bus-common_1.16.2-2_all.deb ...
+Unpacking dbus-session-bus-common (1.16.2-2) ...
+Selecting previously unselected package libapparmor1:amd64.
+Preparing to unpack .../03-libapparmor1_4.1.0-1_amd64.deb ...
+Unpacking libapparmor1:amd64 (4.1.0-1) ...
+Selecting previously unselected package libexpat1:amd64.
+Preparing to unpack .../04-libexpat1_2.9.0-1~deb13u1_amd64.deb ...
+Unpacking libexpat1:amd64 (2.9.0-1~deb13u1) ...
+Selecting previously unselected package dbus-daemon.
+Preparing to unpack .../05-dbus-daemon_1.16.2-2_amd64.deb ...
+Unpacking dbus-daemon (1.16.2-2) ...
+Selecting previously unselected package dbus-system-bus-common.
+Preparing to unpack .../06-dbus-system-bus-common_1.16.2-2_all.deb ...
+Unpacking dbus-system-bus-common (1.16.2-2) ...
+Selecting previously unselected package dbus.
+Preparing to unpack .../07-dbus_1.16.2-2_amd64.deb ...
+Unpacking dbus (1.16.2-2) ...
+Selecting previously unselected package linux-sysctl-defaults.
+Preparing to unpack .../08-linux-sysctl-defaults_4.12.1_all.deb ...
+Unpacking linux-sysctl-defaults (4.12.1) ...
+Selecting previously unselected package libncursesw6:amd64.
+Preparing to unpack .../09-libncursesw6_6.5+20250216-2_amd64.deb ...
+Unpacking libncursesw6:amd64 (6.5+20250216-2) ...
+Selecting previously unselected package libproc2-0:amd64.
+Preparing to unpack .../10-libproc2-0_2%3a4.0.4-9_amd64.deb ...
+Unpacking libproc2-0:amd64 (2:4.0.4-9) ...
+Selecting previously unselected package procps.
+Preparing to unpack .../11-procps_2%3a4.0.4-9_amd64.deb ...
+Unpacking procps (2:4.0.4-9) ...
+Selecting previously unselected package libgpm2:amd64.
+Preparing to unpack .../12-libgpm2_1.20.7-11+b2_amd64.deb ...
+Unpacking libgpm2:amd64 (1.20.7-11+b2) ...
+Selecting previously unselected package libpcap0.8t64:amd64.
+Preparing to unpack .../13-libpcap0.8t64_1.10.5-2_amd64.deb ...
+Unpacking libpcap0.8t64:amd64 (1.10.5-2) ...
+Selecting previously unselected package psmisc.
+Preparing to unpack .../14-psmisc_23.7-2_amd64.deb ...
+Unpacking psmisc (23.7-2) ...
+Selecting previously unselected package tcpdump.
+Preparing to unpack .../15-tcpdump_4.99.5-2_amd64.deb ...
+Unpacking tcpdump (4.99.5-2) ...
+Setting up libexpat1:amd64 (2.9.0-1~deb13u1) ...
+Setting up libapparmor1:amd64 (4.1.0-1) ...
+Setting up libgpm2:amd64 (1.20.7-11+b2) ...
+Setting up psmisc (23.7-2) ...
+Setting up linux-sysctl-defaults (4.12.1) ...
+Setting up libdbus-1-3:amd64 (1.16.2-2) ...
+Setting up libproc2-0:amd64 (2:4.0.4-9) ...
+Setting up libncursesw6:amd64 (6.5+20250216-2) ...
+Setting up dbus-session-bus-common (1.16.2-2) ...
+Setting up procps (2:4.0.4-9) ...
+insserv: FATAL: service mountkernfs has to be enabled to use service procps
+Setting up libpcap0.8t64:amd64 (1.10.5-2) ...
+Setting up dbus-system-bus-common (1.16.2-2) ...
+Setting up dbus-bin (1.16.2-2) ...
+Setting up tcpdump (4.99.5-2) ...
+Setting up dbus-daemon (1.16.2-2) ...
+Setting up dbus (1.16.2-2) ...
+invoke-rc.d: could not determine current runlevel
+invoke-rc.d: policy-rc.d denied execution of start.
+Processing triggers for libc-bin (2.41-12+deb13u4) ...
+debconf: delaying package configuration, since apt-utils is not installed
+Selecting previously unselected package libdbus-1-3:amd64.
+(Reading database ... 
+(Reading database ... 5%
+(Reading database ... 10%
+(Reading database ... 15%
+(Reading database ... 20%
+(Reading database ... 25%
+(Reading database ... 30%
+(Reading database ... 35%
+(Reading database ... 40%
+(Reading database ... 45%
+(Reading database ... 50%
+(Reading database ... 55%
+(Reading database ... 60%
+(Reading database ... 65%
+(Reading database ... 70%
+(Reading database ... 75%
+(Reading database ... 80%
+(Reading database ... 85%
+(Reading database ... 90%
+(Reading database ... 95%
+(Reading database ... 100%
+(Reading database ... 7118 files and directories currently installed.)
+Preparing to unpack .../00-libdbus-1-3_1.14.10-1~deb12u1_amd64.deb ...
+Unpacking libdbus-1-3:amd64 (1.14.10-1~deb12u1) ...
+Selecting previously unselected package dbus-bin.
+Preparing to unpack .../01-dbus-bin_1.14.10-1~deb12u1_amd64.deb ...
+Unpacking dbus-bin (1.14.10-1~deb12u1) ...
+Selecting previously unselected package dbus-session-bus-common.
+Preparing to unpack .../02-dbus-session-bus-common_1.14.10-1~deb12u1_all.deb ...
+Unpacking dbus-session-bus-common (1.14.10-1~deb12u1) ...
+Selecting previously unselected package libapparmor1:amd64.
+Preparing to unpack .../03-libapparmor1_3.0.8-3_amd64.deb ...
+Unpacking libapparmor1:amd64 (3.0.8-3) ...
+Selecting previously unselected package libexpat1:amd64.
+Preparing to unpack .../04-libexpat1_2.5.0-1+deb12u5_amd64.deb ...
+Unpacking libexpat1:amd64 (2.5.0-1+deb12u5) ...
+Selecting previously unselected package dbus-daemon.
+Preparing to unpack .../05-dbus-daemon_1.14.10-1~deb12u1_amd64.deb ...
+Unpacking dbus-daemon (1.14.10-1~deb12u1) ...
+Selecting previously unselected package dbus-system-bus-common.
+Preparing to unpack .../06-dbus-system-bus-common_1.14.10-1~deb12u1_all.deb ...
+Unpacking dbus-system-bus-common (1.14.10-1~deb12u1) ...
+Selecting previously unselected package dbus.
+Preparing to unpack .../07-dbus_1.14.10-1~deb12u1_amd64.deb ...
+Unpacking dbus (1.14.10-1~deb12u1) ...
+Selecting previously unselected package libncursesw6:amd64.
+Preparing to unpack .../08-libncursesw6_6.4-4_amd64.deb ...
+Unpacking libncursesw6:amd64 (6.4-4) ...
+Selecting previously unselected package libproc2-0:amd64.
+Preparing to unpack .../09-libproc2-0_2%3a4.0.2-3_amd64.deb ...
+Unpacking libproc2-0:amd64 (2:4.0.2-3) ...
+Selecting previously unselected package procps.
+Preparing to unpack .../10-procps_2%3a4.0.2-3_amd64.deb ...
+Unpacking procps (2:4.0.2-3) ...
+Selecting previously unselected package libgpm2:amd64.
+Preparing to unpack .../11-libgpm2_1.20.7-10+b1_amd64.deb ...
+Unpacking libgpm2:amd64 (1.20.7-10+b1) ...
+Selecting previously unselected package libpcap0.8:amd64.
+Preparing to unpack .../12-libpcap0.8_1.10.3-1_amd64.deb ...
+Unpacking libpcap0.8:amd64 (1.10.3-1) ...
+Selecting previously unselected package psmisc.
+Preparing to unpack .../13-psmisc_23.6-1_amd64.deb ...
+Unpacking psmisc (23.6-1) ...
+Selecting previously unselected package tcpdump.
+Preparing to unpack .../14-tcpdump_4.99.3-1_amd64.deb ...
+Unpacking tcpdump (4.99.3-1) ...
+Setting up libexpat1:amd64 (2.5.0-1+deb12u5) ...
+Setting up libapparmor1:amd64 (3.0.8-3) ...
+Setting up libgpm2:amd64 (1.20.7-10+b1) ...
+Setting up psmisc (23.6-1) ...
+Setting up libdbus-1-3:amd64 (1.14.10-1~deb12u1) ...
+Setting up libproc2-0:amd64 (2:4.0.2-3) ...
+Setting up libncursesw6:amd64 (6.4-4) ...
+Setting up dbus-session-bus-common (1.14.10-1~deb12u1) ...
+Setting up procps (2:4.0.2-3) ...
+Setting up dbus-system-bus-common (1.14.10-1~deb12u1) ...
+Setting up dbus-bin (1.14.10-1~deb12u1) ...
+Setting up dbus-daemon (1.14.10-1~deb12u1) ...
+Setting up libpcap0.8:amd64 (1.10.3-1) ...
+Setting up dbus (1.14.10-1~deb12u1) ...
+invoke-rc.d: could not determine current runlevel
+invoke-rc.d: policy-rc.d denied execution of start.
+Setting up tcpdump (4.99.3-1) ...
+Processing triggers for libc-bin (2.36-9+deb12u14) ...
+--- create subscriber ---
+--- start ue ---
+--- start captures ---
+--- ping ueTun0 / ueTun1 ---
+PING 1.1.1.1 (1.1.1.1) from 10.60.0.1 ueTun0: 56(84) bytes of data.
+64 bytes from 1.1.1.1: icmp_seq=1 ttl=60 time=57.9 ms
+64 bytes from 1.1.1.1: icmp_seq=2 ttl=60 time=55.6 ms
+64 bytes from 1.1.1.1: icmp_seq=3 ttl=60 time=55.8 ms
+
+--- 1.1.1.1 ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2004ms
+rtt min/avg/max/mdev = 55.641/56.451/57.910/1.033 ms
+PING 1.1.1.1 (1.1.1.1) from 10.60.0.2 ueTun1: 56(84) bytes of data.
+64 bytes from 1.1.1.1: icmp_seq=1 ttl=60 time=55.3 ms
+64 bytes from 1.1.1.1: icmp_seq=2 ttl=60 time=55.5 ms
+64 bytes from 1.1.1.1: icmp_seq=3 ttl=60 time=67.0 ms
+
+--- 1.1.1.1 ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2003ms
+rtt min/avg/max/mdev = 55.290/59.245/66.978/5.468 ms
+--- verify upf.pcap / ue.pcap ---
+--- cleanup ---
+ Container ue Stopping 
+ Container ue Stopped 
+ Container ue Removing 
+ Container ue Removed 
+ Container gnb-secondary Stopping 
+ Container gnb-master Stopping 
+ Container gnb-secondary Stopped 
+ Container gnb-secondary Removing 
+ Container gnb-secondary Removed 
+ Container gnb-master Stopped 
+ Container gnb-master Removing 
+ Container gnb-master Removed 
+ Container nssf Stopping 
+ Container amf Stopping 
+ Container chf Stopping 
+ Container udm Stopping 
+ Container udr Stopping 
+ Container ausf Stopping 
+ Container smf Stopping 
+ Container pcf Stopping 
+ Container smf Stopped 
+ Container smf Removing 
+ Container smf Removed 
+ Container upf Stopping 
+ Container nssf Stopped 
+ Container nssf Removing 
+ Container nssf Removed 
+ Container udm Stopped 
+ Container udm Removing 
+ Container udm Removed 
+ Container ausf Stopped 
+ Container ausf Removing 
+ Container udr Stopped 
+ Container udr Removing 
+ Container chf Stopped 
+ Container chf Removing 
+ Container ausf Removed 
+ Container udr Removed 
+ Container pcf Stopped 
+ Container pcf Removing 
+ Container chf Removed 
+ Container webconsole Stopping 
+ Container pcf Removed 
+ Container amf Stopped 
+ Container amf Removing 
+ Container amf Removed 
+ Container upf Stopped 
+ Container upf Removing 
+ Container upf Removed 
+ Container webconsole Stopped 
+ Container webconsole Removing 
+ Container webconsole Removed 
+ Container nrf Stopping 
+ Container nrf Stopped 
+ Container nrf Removing 
+ Container nrf Removed 
+ Container mongodb Stopping 
+ Container mongodb Stopped 
+ Container mongodb Removing 
+ Container mongodb Removed 
+ Network pj3-dc_ran-ue Removing 
+ Network pj3-dc_sbi Removing 
+ Network pj3-dc_cn-rans Removing 
+ Network pj3-dc_ran-ue Removed 
+ Network pj3-dc_sbi Removed 
+ Network pj3-dc_cn-rans Removed 
+
+┌──────────────────────────────────┬───────┬─────────┐
+│ Item                             │ Score │ Status  │
+├──────────────────────────────────┼───────┼─────────┤
+│ Code (build/test/lint/image)     │ 0/0   │ ✅ PASS │
+│ PDU sessions on master RAN       │ 60/60 │ ✅ PASS │
+│ PDU session 2 on second RAN (DC) │ 20/20 │ ✅ PASS │
+├──────────────────────────────────┼───────┼─────────┤
+│ Total                            │ 80/80 │ -       │
+└──────────────────────────────────┴───────┴─────────┘

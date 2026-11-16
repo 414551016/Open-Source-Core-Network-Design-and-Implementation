@@ -1,0 +1,11 @@
+Project 3 | single RAN | UPF capture
+Source file: single-upf.pcap    Decoder: TShark
+Display filter: icmp && ip.addr == 1.1.1.1 && gtp
+
+Frame  Source IPv4                     Destination IPv4                ICMP          TEID
+3      10.0.1.2,10.60.0.1              10.0.1.5,1.1.1.1                Echo request  0x00000002
+8      10.0.1.5,1.1.1.1                10.0.1.2,10.60.0.1              Echo reply    0x00000001
+31     10.0.1.2,10.60.0.2              10.0.1.5,1.1.1.1                Echo request  0x00000006
+36     10.0.1.5,1.1.1.1                10.0.1.2,10.60.0.2              Echo reply    0x00000002
+
+Comma-separated IPv4 values show the outer N3 address first, then the inner IP.
